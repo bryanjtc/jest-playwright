@@ -6,7 +6,7 @@ import type {
   ConnectOptions,
   ConnectOverCDPOptions,
   Page,
-} from 'playwright-core'
+} from '@playwright/test'
 import { Event } from 'jest-circus'
 import type { JestEnvironmentConfig } from '@jest/environment'
 import type {

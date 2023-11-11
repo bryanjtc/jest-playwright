@@ -1,5 +1,6 @@
-import JestRunner from 'jest-runner'
-import type { BrowserServer } from 'playwright-core'
+import { VitestTestRunner } from 'vitest/runners'
+import { UserConfig, defineConfig } from 'vitest/config'
+import type { BrowserServer } from '@playwright/test'
 import type {
   Test,
   TestRunnerContext,
@@ -102,9 +103,9 @@ const getJestTimeout = (configTimeout?: number) => {
   return process.env.PWDEBUG ? DEBUG_TIMEOUT : DEFAULT_TEST_PLAYWRIGHT_TIMEOUT
 }
 
-class PlaywrightRunner extends JestRunner {
+class PlaywrightRunner extends VitestTestRunner {
   browser2Server: Partial<Record<string, BrowserServer>>
-  config: JestConfig.GlobalConfig
+  config: UserConfig
   constructor(
     globalConfig: JestConfig.GlobalConfig,
     context: TestRunnerContext,
